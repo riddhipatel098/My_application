@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +18,7 @@ public class AddNewContact extends Fragment {
     EditText name,number;
     Button  button_save;
     DatabaseHelper myDB;
-
+    ContactList contactList;
 
     public void AddNewContact()
     {
@@ -27,9 +29,15 @@ public class AddNewContact extends Fragment {
                if(isInserted==true)
                {
                    Toast.makeText(getContext(), "Inserted Successfull", Toast.LENGTH_SHORT).show();
+                   name.setText("");
+                   number.setText("");
                    System.out.println(name.getText().toString());
                    System.out.println(number.getText().toString());
-
+                    contactList=new ContactList();
+                   FragmentManager fragmentManager = getFragmentManager();
+                   FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                   fragmentTransaction.replace(R.id.frameLayout,contactList);
+                   fragmentTransaction.commit();
                }
                else
                {

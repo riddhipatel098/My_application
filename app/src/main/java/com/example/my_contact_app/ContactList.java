@@ -65,6 +65,8 @@ public class ContactList extends Fragment implements OnClickListener {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, fragment,"edit");
+        fragmentTransaction.detach(fragment);
+        fragmentTransaction.attach(fragment);
         fragmentTransaction.commit();
     }
 
@@ -80,4 +82,5 @@ public class ContactList extends Fragment implements OnClickListener {
         editContact.setArguments(bundle);
         loadFragment(editContact);
     }
+
 }

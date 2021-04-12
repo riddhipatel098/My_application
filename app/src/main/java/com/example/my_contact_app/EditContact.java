@@ -3,6 +3,8 @@ package com.example.my_contact_app;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +18,7 @@ public class EditContact extends Fragment {
     EditText name,number;
     Button button_save;
     DatabaseHelper myDB;
-
+    ContactList contactList;
     public void UpdateData(long id)
     {
 
@@ -30,7 +32,12 @@ public class EditContact extends Fragment {
                     Toast.makeText(getContext(), "Update Successfull", Toast.LENGTH_SHORT).show();
                     System.out.println(name.getText().toString());
                     System.out.println(number.getText().toString());
+                    contactList=new ContactList();
 
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameLayout,contactList);
+                    fragmentTransaction.commit();
                 }
                 else
                 {

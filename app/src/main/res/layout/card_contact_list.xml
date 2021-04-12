@@ -23,7 +23,7 @@
     </LinearLayout>
     <TextView
         android:id="@+id/Person_Name"
-        android:layout_width="match_parent"
+        android:layout_width="600dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="18dp"
@@ -37,7 +37,8 @@
         android:maxLength="10"
         android:textSize="15dp"
         android:layout_marginTop="20dp"
-     android:layout_marginLeft="-100dp"
+         android:layout_marginLeft="-225dp"
+        android:layout_marginRight="70dp"
         android:textColor="@color/colorGray"
        />
    <ImageView
@@ -45,7 +46,13 @@
        android:layout_width="50dp"
        android:layout_height="30dp"
        android:src="@drawable/ic_baseline_edit_note_24"
-       />
+       /> <ImageView
+    android:id="@+id/Delete"
+    android:layout_width="50dp"
+    android:layout_height="30dp"
+    android:src="@drawable/ic_baseline_delete_24"
+    />
+
 
 
 

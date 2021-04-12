@@ -91,6 +91,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_NUMBER,Contact);
         db.update(TABLE_NAME,contentValues,"id=?",new String[] {id});
         return true;
+
+    } public int DeleteData(String id)
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+
+        return db.delete(TABLE_NAME,"id=?",new String[] {id});
+
     }
+
 
 }

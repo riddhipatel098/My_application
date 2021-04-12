@@ -13,25 +13,30 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdaptorContactList extends RecyclerView.Adapter<AdaptorContactList.HomeViewHolder> {
+public class AdaptorContactList extends RecyclerView.Adapter<AdaptorContactList.HomeViewHolder>  {
 
     Context context;
     ArrayList<Contacts> contactslist;
     RecyclerView show_contacts;
     Activity activity;
     OnClickListener onClickListener;
+    DatabaseHelper myDB;
+    OnchangeListener onchangelistener;
+
 
 
     public class HomeViewHolder extends RecyclerView.ViewHolder{
 
         LinearLayout recyclerClickContact;
         TextView character,contactName,person_name;
-        ImageView edit;
+        ImageView edit,delete;
+
 
         public HomeViewHolder(@NonNull View i) {
             super(i);
@@ -40,6 +45,9 @@ public class AdaptorContactList extends RecyclerView.Adapter<AdaptorContactList.
             person_name = i.findViewById(R.id.Person_Name);
             contactName = i.findViewById(R.id.contactName);
             edit = i.findViewById(R.id.Edit);
+            delete = i.findViewById(R.id.Delete);
+            myDB=new DatabaseHelper(context);
+
             recyclerClickContact = i.findViewById(R.id.recyclerClickContact);
         }
 
@@ -67,6 +75,24 @@ public  AdaptorContactList(Context context, ArrayList<Contacts> contactslist, Ac
         holder.character.setText(contactslist.get(i).getName());
         holder.contactName.setText(contactslist.get(i).getNumber());
         holder.person_name.setText(contactslist.get(i).getName());
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Integer deleteData=myDB.DeleteData(String.valueOf(contactslist.get(i).getId()));
+              //  Toast.makeText(context, contactslist.get(i).getName(), Toast.LENGTH_SHORT).show();
+                if(deleteData>0)
+                {
+                   Toast.makeText(context, "delteded", Toast.LENGTH_SHORT).show();
+
+
+
+                }else
+                {
+                  Toast.makeText(context, "not delteded", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
