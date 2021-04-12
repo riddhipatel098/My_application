@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_addnewcontact"
+        android:title="@string/nav_addNewContact" />
+    <item
+        android:id="@+id/nav_success"
+        android:icon="@drawable/ic_contacts"
+        android:title="@string/nav_contacts" />
+
+
+</menu>
