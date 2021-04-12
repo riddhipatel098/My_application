@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,7 +22,8 @@ private BottomNavigationView bottomNavigationView;
     private FrameLayout frameLayout;
     private AddNewContact addnewcontact;
     private ContactList contactList;
-    ImageView img;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ private BottomNavigationView bottomNavigationView;
         frameLayout = findViewById(R.id.frameLayout);
         addnewcontact = new AddNewContact();
         contactList = new ContactList();
-        img= findViewById(R.id.Edit);
+       // editContact=new EditContact();
         setFragment(contactList);
         myDB=new DatabaseHelper(this);
 
@@ -47,6 +49,7 @@ private BottomNavigationView bottomNavigationView;
                     case R.id.nav_success :
                         setFragment(contactList);
                         return true;
+
                     default :
                         return false;
                 }

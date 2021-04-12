@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.My_contact_app">
-        <activity android:name=".Edit_contact"></activity>
         <activity android:name=".ViewContact" />
         <activity android:name=".MainActivity">
             <intent-filter>

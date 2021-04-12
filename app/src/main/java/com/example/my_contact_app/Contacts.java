@@ -6,10 +6,10 @@ public class Contacts {
     private String number;
 
 
+
     public long getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -23,36 +24,32 @@ public class AdaptorContactList extends RecyclerView.Adapter<AdaptorContactList.
     ArrayList<Contacts> contactslist;
     RecyclerView show_contacts;
     Activity activity;
+    OnClickListener onClickListener;
 
-    final View.OnClickListener onClickListener=new MyOnClickListener();
 
     public class HomeViewHolder extends RecyclerView.ViewHolder{
 
         LinearLayout recyclerClickContact;
-        TextView character,contactName;
+        TextView character,contactName,person_name;
         ImageView edit;
 
         public HomeViewHolder(@NonNull View i) {
             super(i);
 
             character = i.findViewById(R.id.character);
+            person_name = i.findViewById(R.id.Person_Name);
             contactName = i.findViewById(R.id.contactName);
-            edit=i.findViewById(R.id.Edit);
+            edit = i.findViewById(R.id.Edit);
             recyclerClickContact = i.findViewById(R.id.recyclerClickContact);
-//            edit.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent=new Intent(, Edit_contact.class);
-//
-//                }
-//            });
         }
+
     }
-public  AdaptorContactList(Context context, ArrayList<Contacts> contactslist, Activity activity)
+public  AdaptorContactList(Context context, ArrayList<Contacts> contactslist, Activity activit,OnClickListener onClickListener)
 {
     this.context=context;
     this.contactslist=contactslist;
     this.activity=activity;
+    this.onClickListener=onClickListener;
 }
     @NonNull
     @Override
@@ -69,7 +66,17 @@ public  AdaptorContactList(Context context, ArrayList<Contacts> contactslist, Ac
        // Contacts contacts=contactslist.get(i);
         holder.character.setText(contactslist.get(i).getName());
         holder.contactName.setText(contactslist.get(i).getNumber());
+        holder.person_name.setText(contactslist.get(i).getName());
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(context, "Pressed Edit", Toast.LENGTH_SHORT).show();
+                onClickListener.onclick(contactslist.get(i).getId(),contactslist.get(i).getName(),contactslist.get(i).getNumber());
+            }
 
+
+
+        });
         holder.recyclerClickContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -82,4 +82,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
+    //Update Contact
+    public boolean updateData(String id,String name,String Contact )
+    {
+        SQLiteDatabase db=this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(COL_NAME,name);
+        contentValues.put(COL_NUMBER,Contact);
+        db.update(TABLE_NAME,contentValues,"id=?",new String[] {id});
+        return true;
+    }
+
 }
